@@ -8,13 +8,14 @@
 '''
 
 from model.enum import Chat_MODEL
+from services.base.model import CVChatModel
 from model.prompts.base import Job_Prompts
 from services.base.dealwith import DealWith
 from model.schema.outputs import job_output_parser, job_analysis_output_parser
 from fastapi import APIRouter
 from model.schema.inputs import Job_Input_Schema
 from model.response.datas import Job_Response
-from langchain_core.output_parsers import StrOutputParser
+from langchain.output_parsers import OutputFixingParser
 import traceback
 
 job = APIRouter()
@@ -37,7 +38,7 @@ parser_map = {
 async def process(data: Job_Input_Schema):
     try:
         res = await Invoker(prompt_type=data.type,
-                            params=data.model_dump(),
+                            params=data.dict(),
                             parser=parser_map[data.type]
                             ).arun()
     except Exception:

@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 '''
-@File    :   server.py
+@File    :   main.py
 @Time    :   2024/06/04 14:35:59
 @Author  :   Song榆钱儿
-@description   :   主启动文件
 '''
 
 from fastapi import FastAPI

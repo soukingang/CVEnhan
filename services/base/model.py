@@ -25,5 +25,5 @@ class CVChatModel:
         elif self.model == Chat_MODEL.ChatOllama:
             return ChatOllama(model="llama3")
         elif self.model == Chat_MODEL.QianfanChat:
-            return QianfanChatEndpoint(model="ERNIE-Speed-8K", temperature=0.1)
+            return QianfanChatEndpoint(model="ERNIE-3.5-8K", temperature=0.1)
         return ChatOpenAI()

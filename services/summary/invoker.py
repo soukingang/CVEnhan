@@ -19,7 +19,7 @@ import traceback
 
 summary = APIRouter()
 class Invoker(DealWith):
-    def __init__(self, model: Chat_MODEL=Chat_MODEL.ChatTongyi,
+    def __init__(self, model: Chat_MODEL=Chat_MODEL.QianfanChat,
                  prompt_type: Summary_Prompts=None,
                  params: dict={},
                  parser=summary_output_parser):
@@ -36,7 +36,7 @@ parser_map = {
 async def process(data: Summary_Input_Schema):
     try:
         res = await Invoker(prompt_type=data.type,
-                            params=data.model_dump(),
+                            params=data.dict(),
                             parser=parser_map[data.type]
                             ).arun()
     except Exception:

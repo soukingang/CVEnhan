@@ -36,7 +36,7 @@ parser_map = {
 async def process(data: Project_Input_Schema):
     try:
         res = await Invoker(prompt_type=data.type,
-                            params=data.model_dump(),
+                            params=data.dict(),
                             parser=parser_map[data.type]
                             ).arun()
     except Exception:
